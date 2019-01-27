@@ -94,8 +94,9 @@ import {FormsModule} from '@angular/forms';
         Это есть экземпляр FormControl.
         Потом в нужных местах используем через "bindName2ngModel.model"
         -->
-        <span>Цвет (в момент ввода текста){{bindName2ngModel.model}}:</span>
+        <span>Цвет (в момент ввода текста){{bindName2ngModel.name}}, {{bindName2ngModel.model}} :</span>
         <input type="text"
+               name="input-name-login"
                (input)="onInputSelectedColor($event)"
                [(ngModel)]="selectedColor"
                #bindName2ngModel="ngModel"

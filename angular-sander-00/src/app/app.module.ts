@@ -6,7 +6,9 @@ import {InterpolationComponent} from './00/interpolation/interpolation.component
 import {RouterModule, Routes} from '@angular/router';
 import {MenuComponent} from './menu/menu.component';
 import {HomeComponent} from './home/home.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
+import { ListComponent as UserListComponent} from './users/list/list.component';
+import {UsersArrayService} from './01/services/users-array.service';
 
 const routes: Routes = [{
     path: '', // 1. Указываем, что компонент "HomeComponent" должен отображаться если маршрут не найден (компонент по-умолчанию).
@@ -17,6 +19,9 @@ const routes: Routes = [{
 }, {
     path: '00/interpolation',
     component: InterpolationComponent
+}, {
+    path: '01/services/user-array-list',
+    component: UserListComponent
 }];
 
 @NgModule({
@@ -24,14 +29,17 @@ const routes: Routes = [{
         AppComponent,
         InterpolationComponent,
         MenuComponent,
-        HomeComponent
+        HomeComponent,
+        UserListComponent
     ],
     imports: [
         BrowserModule,
         RouterModule.forRoot(routes),
         FormsModule
     ],
-    providers: [],
+    providers: [
+        UsersArrayService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

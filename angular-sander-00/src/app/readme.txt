@@ -103,4 +103,46 @@ const routes: Routes = [
 См. "angular-sander-00/src/app/00/interpolation/interpolation.component.html"
 
 
-
+4. Сервисы, директива ngFor
+Пишем сервис, предоставляющий доступ к списку пользователей.
+4.1. Создание сервиса
+4.1.1. Генерируем сервис.
+>ng g s 01/services/users-array
+Реализовываем в сервисе метод "getAll", который возвращает список пользователей.
+4.1.2. Порписываем сервис в "angular-sander-00/src/app/app.module.ts"
+import {UsersArrayService} from './01/services/users-array.service';
+@NgModule({
+    providers: [
+        UsersArrayService
+    ],
+});
+4.2. Создаем компонент для отображения списка пользователей
+4.2.1. Генерируем
+>ng g c users/list
+4.2.2. Прописіваем в "angular-sander-00/src/app/app.module.ts"
+// Обратим внимание на алиас "UserListComponent" для компонента "ListComponent".
+import { ListComponent as UserListComponent} from './users/list/list.component';
+const routes: Routes = [{
+    path: '01/services/user-array-list',
+    component: UserListComponent
+}];
+@NgModule({
+    declarations: [
+        UserListComponent
+    ],
+});
+4.2.3. Добавляем элемент меню в "angular-sander-00/src/app/menu/menu.component.html"
+<div class="menu">
+  <a routerLink="01/services/user-array-list" class="menu-item">01/services/user-array-list</a>
+</div>
+4.2.4. Прописываем сервис в "angular-sander-00/src/app/users/list/list.component.ts"
+import {UsersArrayService} from '../../01/services/users-array.service';
+export class ListComponent implements OnInit {
+    private users;
+    constructor(private  service: UsersArrayService) {
+        this.users = service.getAll();
+    }
+4.2.5 Используем список пользователей в представлении через ngFor
+<ul>
+  <li *ngFor="let user of users">{{user.name}} - {{user.sex}}</li>
+</ul>
