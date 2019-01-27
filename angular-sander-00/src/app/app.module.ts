@@ -6,6 +6,7 @@ import {InterpolationComponent} from './00/interpolation/interpolation.component
 import {RouterModule, Routes} from '@angular/router';
 import {MenuComponent} from './menu/menu.component';
 import {HomeComponent} from './home/home.component';
+import {FormsModule} from "@angular/forms";
 
 const routes: Routes = [{
     path: '', // 1. Указываем, что компонент "HomeComponent" должен отображаться если маршрут не найден (компонент по-умолчанию).
@@ -27,7 +28,8 @@ const routes: Routes = [{
     ],
     imports: [
         BrowserModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

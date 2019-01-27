@@ -1,3 +1,105 @@
 <p>
-  interpolation works!
+    interpolation works!
 </p>
+<hr>
+<!-- В {{имяСвойства}} связываем имя свойства  "interpolation.component.ts", которое должно подставляться -->
+<div class="caption">Строковая интерполяция:</div>
+<div>
+    <p>someText = {{someText}}</p>
+    <p>counter = {{counter}}</p>
+</div>
+<hr>
+<!-- Квадратными скобками указываем имя DOM-свойства, которое нужно менять, а
+в "" имя свойства из "interpolation.component.ts"
+-->
+<div class="caption">Интерполяция свойств:</div>
+<div>
+    Через свойство innerText:
+    <span class="displayColor"
+          [innerText]="someText"
+          [style.color]="selectedColor">
+    </span>
+</div>
+
+<hr>
+<!--Связывание событий через конструкцию вида:
+  (имяСобытияDOM)="имяОбработчикаInterpolationComponent($event)"
+-->
+<div class="caption">Связывание событий:</div>
+<div>
+    <div>
+        Счетчик:
+        <span class="button" (click)="onClickCounterInc($event)">Увеличить</span>
+        <span class="button" (click)="onClickCounterDec($event)">Уменьшить</span>
+        <br>
+    </div>
+    <div>
+        <!-- Установка случайного цвета при нажатии на кнопку-->
+        <span class="button" (click)="onClickColorRandom($event)">Случайный цвет</span>
+    </div>
+    <div>
+        <!-- При вводе текста сразу же вызывается onInputSelectedColor -->
+        <span>Цвет (в момент ввода текста):</span>
+        <input type="text" (input)="onInputSelectedColor($event)">
+    </div>
+    <div>
+        <!-- Ввод по Enter-->
+        <span>Цвет(по нажатию enter):</span>
+        <input type="text"
+               (keydown.enter)="onInputSelectedColor($event)"
+        >
+    </div>
+    <div>
+        <!-- Реакция на комбинацию клавиш-->
+        <span>Цвет(по нажатию ctrl+shift+enter):</span>
+        <input type="text"
+               (keydown.control.shift.enter)="onInputSelectedColor($event)"
+        >
+    </div>
+    <div>
+        <!-- input доступен другим компонентам через имя "inputColor"-->
+        <input type="text" #inputColor>
+        <span class="button" (click)="setSelectedColor(inputColor.value)">Цвет из input</span>
+    </div>
+</div>
+
+<hr>
+<!--
+  Двустороннее связывание через [(ngModel)]
+1. Добавляем зависимости в "angular-sander-00/src/app/app.module.ts"
+import {FormsModule} from '@angular/forms';
+@NgModule({
+    ...
+    imports: [
+        FormsModule
+    ],
+-->
+<div class="caption">Двусторонняя связка через ngModel:</div>
+<div>
+    <div>
+        <!--
+        2. Прописываем Input-у  [(ngModel)]="selectedColor", что
+        говорит "Свяжи значение input с переменной selectedColor.
+        При изменении input меняй переменную, а при изменении переменной меняй input"
+        -->
+        <span>Цвет (в момент ввода текста):</span>
+        <input type="text"
+               (input)="onInputSelectedColor($event)"
+               [(ngModel)]="selectedColor"
+        >
+    </div>
+    <div>
+        <!--
+        3. Публикуем ngModel input-а под именем "bindName2ngModel".
+        Это есть экземпляр FormControl.
+        Потом в нужных местах используем через "bindName2ngModel.model"
+        -->
+        <span>Цвет (в момент ввода текста){{bindName2ngModel.model}}:</span>
+        <input type="text"
+               (input)="onInputSelectedColor($event)"
+               [(ngModel)]="selectedColor"
+               #bindName2ngModel="ngModel"
+        >
+    </div>
+</div>
+<hr>

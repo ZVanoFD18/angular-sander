@@ -100,7 +100,7 @@ const routes: Routes = [
   <a routerLink="/00/interpolation">00/interpolation</a>
 </div>
 3.3 Наполняем контентом по интерполяции.
-
+См. "angular-sander-00/src/app/00/interpolation/interpolation.component.html"
 
 
 
