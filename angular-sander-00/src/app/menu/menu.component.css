@@ -1,0 +1,17 @@
+.menu{
+    border: 1px dashed aquamarine;
+    display: flex;
+    flex-direction : row;
+    flex-wrap : wrap;
+    justify-content : center;
+}
+.menu-item{
+    background-color: lightgray;
+    margin: 15px auto ;
+    padding: 5px;
+    border-radius: 5px;
+}
+.menu-item:hover{
+    background-color: aquamarine;
+    color: blue;
+}
