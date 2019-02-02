@@ -63,10 +63,21 @@
     </div>
 </div>
 
+<!-- ngModel
+Применимо только к полямм ввода HTML-форм.
+1. Добавляем зависимости в "angular-sander-00/src/app/app.module.ts"
+import {FormsModule} from '@angular/forms';
+@NgModule({
+    ...
+    imports: [
+        FormsModule
+    ],
+-->
 <hr>
 <div class="caption">Односторонняя связка через ngModel:</div>
 <div>
-    <!--При изменении значения свойства selectedColor в "interpolation.component.ts" автоматически меняется значение
+    <!-- Прописываем Input-у  [ngModel]="selectedColor"
+    При изменении значения свойства selectedColor в "interpolation.component.ts" автоматически меняется значение
     input #inputDisplaySelectedColor. При смене значения #inputDisplaySelectedColor selectedColor не меняется,
     однако введеннок значение можно интерполировать через фантомное имя написав "inputDisplaySelectedColor.value".
     -->
@@ -77,13 +88,6 @@
 <hr>
 <!--
   Двустороннее связывание через [(ngModel)]
-1. Добавляем зависимости в "angular-sander-00/src/app/app.module.ts"
-import {FormsModule} from '@angular/forms';
-@NgModule({
-    ...
-    imports: [
-        FormsModule
-    ],
 -->
 <div class="caption">Двусторонняя связка через ngModel:</div>
 <div>
