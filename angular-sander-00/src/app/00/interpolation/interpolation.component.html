@@ -64,6 +64,17 @@
 </div>
 
 <hr>
+<div class="caption">Односторонняя связка через ngModel:</div>
+<div>
+    <!--При изменении значения свойства selectedColor в "interpolation.component.ts" автоматически меняется значение
+    input #inputDisplaySelectedColor. При смене значения #inputDisplaySelectedColor selectedColor не меняется,
+    однако введеннок значение можно интерполировать через фантомное имя написав "inputDisplaySelectedColor.value".
+    -->
+    <span [style.color]="inputDisplaySelectedColor.value">selectedColor=:</span>
+    <input type="text" [ngModel]="selectedColor" #inputDisplaySelectedColor>
+</div>
+
+<hr>
 <!--
   Двустороннее связывание через [(ngModel)]
 1. Добавляем зависимости в "angular-sander-00/src/app/app.module.ts"
@@ -81,6 +92,8 @@ import {FormsModule} from '@angular/forms';
         2. Прописываем Input-у  [(ngModel)]="selectedColor", что
         говорит "Свяжи значение input с переменной selectedColor.
         При изменении input меняй переменную, а при изменении переменной меняй input"
+        Примечание: если свойство selectedColor не объявлено в компоненте "interpolation.component.ts", то
+        оно будет создано в объекте компонента автоматически.
         -->
         <span>Цвет (в момент ввода текста):</span>
         <input type="text"

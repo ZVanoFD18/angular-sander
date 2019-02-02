@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class InterpolationComponent implements OnInit {
     private someText = 'someText';
     private counter = 0;
-    private selectedColor = 'black';
+    private selectedColor = 'green';
 
     constructor() {
     }
