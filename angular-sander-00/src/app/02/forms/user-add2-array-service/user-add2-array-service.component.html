@@ -1,0 +1,51 @@
+<form #formUserAdd="ngForm"
+      (submit)="onSubmit(formUserAdd)"
+      *ngIf="isFormVisible == true"
+>
+  <div class="title">Добавление пользователя</div>
+  <div class="inputs">
+    <label for="">
+      <span class="fieldLabel">Логин:</span>
+      <input type="text"
+             name="login"
+             [(ngModel)]="userLogin"
+             #inputLogin="ngModel"
+             required pattern="[a-zA-Z]{1,15}"
+      >
+      <span [hidden]="inputLogin.valid" class="invalidInputMessage">Логин невалиден</span>
+    </label>
+
+    <label for="">
+      <span class="fieldLabel">Пароль:</span>
+      <input type="text" todo-type="password"
+             name="pass"
+             [(ngModel)]="userPass"
+             #inputPass="ngModel"
+             required
+             pattern="[a-zA-Z\d]{6,15}"
+      >
+      <span *ngIf="inputPass.valid == false" class="invalidInputMessage">Пароль невалиден</span>
+    </label>
+
+    <label for="">
+      <span class="fieldLabel">Подтвердите пароль:</span>
+      <input type="text" todo-type="password"
+             name="passConfirm"
+             [(ngModel)]="userPassConfitm"
+             #inputPassConfirm="ngModel"
+      >
+      <span *ngIf="inputPass.value != inputPassConfirm.value" class="invalidInputMessage">Пароли не совпадают</span>
+    </label>
+  </div>
+  <div class="buttons">
+    <button [disabled]="formUserAdd.invalid">Добавить</button>
+    <button (click)="hideFormAdd()">Отмена</button>
+  </div>
+
+</form>
+
+
+<hr>
+<button class="userAdd" (click)="showFormAdd()">Добавить пользователя</button>
+<hr>
+<app-list></app-list>

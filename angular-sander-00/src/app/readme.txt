@@ -146,3 +146,27 @@ export class ListComponent implements OnInit {
 <ul>
   <li *ngFor="let user of users">{{user.name}} - {{user.sex}}</li>
 </ul>
+
+5. Формы
+5.1. ngForm
+5.1.1. Генерируем заготовку и подключаем в проект.
+>ng g c 02/forms/user-add2-array-service
+
+//angular-sander-00/src/app/02/forms/user-add2-array-service/user-add2-array-service.component.ts
+import {UsersArrayService} from '../../../01/services/users-array.service';
+constructor(private us: UsersArrayService) { }
+
+// angular-sander-00/src/app/app.module.ts
+import { UserAdd2ArrayServiceComponent } from './02/forms/user-add2-array-service/user-add2-array-service.component';
+const routes: Routes = [{
+    path: '02/forms/user-add2-array-service',
+    component: UserAdd2ArrayServiceComponent
+}];
+@NgModule({
+    declarations: [
+        UserAdd2ArrayServiceComponent
+    ],
+
+// angular-sander-00/src/app/menu/menu.component.html
+  <a routerLink="02/forms/user-add2-array-service" class="menu-item">02/forms/user-add2-array-service</a>
+5.1.2. Наполняем контентом. См. "angular-sander-00/src/app/02/forms/user-add2-array-service"

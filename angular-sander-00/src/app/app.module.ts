@@ -9,6 +9,7 @@ import {HomeComponent} from './home/home.component';
 import {FormsModule} from '@angular/forms';
 import { ListComponent as UserListComponent} from './users/list/list.component';
 import {UsersArrayService} from './01/services/users-array.service';
+import { UserAdd2ArrayServiceComponent } from './02/forms/user-add2-array-service/user-add2-array-service.component';
 
 const routes: Routes = [{
     path: '', // 1. Указываем, что компонент "HomeComponent" должен отображаться если маршрут не найден (компонент по-умолчанию).
@@ -22,6 +23,9 @@ const routes: Routes = [{
 }, {
     path: '01/services/user-array-list',
     component: UserListComponent
+}, {
+    path: '02/forms/user-add2-array-service',
+    component: UserAdd2ArrayServiceComponent
 }];
 
 @NgModule({
@@ -30,7 +34,8 @@ const routes: Routes = [{
         InterpolationComponent,
         MenuComponent,
         HomeComponent,
-        UserListComponent
+        UserListComponent,
+        UserAdd2ArrayServiceComponent
     ],
     imports: [
         BrowserModule,
