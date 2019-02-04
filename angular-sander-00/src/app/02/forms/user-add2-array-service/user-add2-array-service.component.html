@@ -12,7 +12,17 @@
              #inputLogin="ngModel"
              required pattern="[a-zA-Z]{1,15}"
       >
-      <span [hidden]="inputLogin.valid" class="invalidInputMessage">Логин невалиден</span>
+      <span [style.visibility]="inputLogin.valid ? 'hidden' : 'visible'"
+            class="invalidInputMessage">Логин невалиден [style.visibility]="..."</span>
+      <span [style.display]="inputLogin.valid ? 'none' : 'block'"
+            class="invalidInputMessage">Логин невалиден [style.display]="..."</span>
+      <span [ngStyle]="{'display' : inputLogin.valid ? 'none' : 'block'}"
+            class="invalidInputMessage">Логин невалиден [ngStyle]="..."</span>
+      <!--[hidden]="..." не работает, если в СSS задано значение display-->
+      <!--<div [hidden]="inputLogin.valid" class="invalidInputMessage">Логин невалиден</div>-->
+      <!--Не работает display: none из класса .invisible -->
+      <span [ngClass]="{invisible : inputLogin.valid}"
+            class="invalidInputMessage">Логин невалиден [ngClass]="..."</span>
     </label>
 
     <label for="">
@@ -31,10 +41,10 @@
       <span class="fieldLabel">Подтвердите пароль:</span>
       <input type="text" todo-type="password"
              name="passConfirm"
-             [(ngModel)]="userPassConfitm"
+             [(ngModel)]="userPassConfirm"
              #inputPassConfirm="ngModel"
       >
-      <span *ngIf="inputPass.value != inputPassConfirm.value" class="invalidInputMessage">Пароли не совпадают</span>
+      <span *ngIf="inputPass.value != inputPassConfirm.value" class="invalidInputMessage">Пароли не совпадают @TODO: блокировать submit</span>
     </label>
   </div>
   <div class="buttons">

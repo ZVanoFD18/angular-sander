@@ -1,4 +1,9 @@
-.invalidInputMessage{
+.invisible{
+    display: none;
+    visibility: hidden;
+}
+.invalidInputMessage
+{
     color: red;
     margin-left: 0.5rem;
     display: block;
@@ -22,6 +27,7 @@ form {
     font-weight: bold;
     --padding: 0.5rem 2rem;
     text-align: center;
+    cursor: move;
 }
 .inputs{
     padding: 5px;
@@ -36,4 +42,12 @@ input{
 }
 .buttons>button{
     margin-left: 5px;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
 }
