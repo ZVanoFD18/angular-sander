@@ -49,7 +49,7 @@ export class User {
         for (let i = 0, len = str.length; i < len; i++) {
             result += str[i].charCodeAt(0);
         }
-        result = result.toString(16);
-        return result;
+        let hashResult = result.toString(16);
+        return hashResult;
     }
 }

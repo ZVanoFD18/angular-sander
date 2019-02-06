@@ -1,0 +1,22 @@
+<form [formGroup]="formAdd" (submit)="onSubmit()">
+  <label for="">
+    <span>ФИО</span>
+    <input formControlName="userName">
+  </label>
+  <label for="">
+    <span>Логин</span>
+    <input formControlName="userLogin">
+  </label>
+  <label for="">
+    <span>Пароль</span>
+    <input formControlName="userPass">
+  </label>
+  <label for="">
+    <span>Подтвердите пароль</span>
+    <input formControlName="userPassConfirm">
+  </label>
+  <div>
+    <button>Сохранить</button>
+  </div>
+</form>
+<app-list></app-list>

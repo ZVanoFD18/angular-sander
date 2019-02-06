@@ -170,3 +170,22 @@ const routes: Routes = [{
 // angular-sander-00/src/app/menu/menu.component.html
   <a routerLink="02/forms/user-add2-array-service" class="menu-item">02/forms/user-add2-array-service</a>
 5.1.2. Наполняем контентом. См. "angular-sander-00/src/app/02/forms/user-add2-array-service"
+5.2. FormGroup
+5.2.1. Генерируем заготовку и подключаем в проект.
+>ng g c 02/forms/user-add-form-group
+// angular-sander-00/src/app/app.module.ts
+import { UserAddFormGroupComponent } from './02/forms/user-add-form-group/user-add-form-group.component';
+const routes: Routes = [{
+    path: '02/forms/user-add-form-group',
+    component: UserAddFormGroupComponent
+}];
+@NgModule({
+    declarations: [
+        UserAddFormGroupComponent
+    ],
+    imports: [
+        ReactiveFormsModule
+    ],
+// angular-sander-00/src/app/menu/menu.component.html
+  <a routerLink="02/forms/user-add-form-group" class="menu-item">02/forms/user-add-form-group</a>
+5.2.2. Наполняем контентом. См. "angular-sander-00/src/app/02/forms/user-add-form-group"
