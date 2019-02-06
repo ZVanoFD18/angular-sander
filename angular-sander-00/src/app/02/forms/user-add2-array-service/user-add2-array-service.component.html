@@ -2,56 +2,68 @@
       (submit)="onSubmit(formUserAdd)"
       *ngIf="isFormVisible == true"
 >
-  <div class="title">Добавление пользователя</div>
-  <div class="inputs">
-    <label for="">
-      <span class="fieldLabel">Логин:</span>
-      <input type="text"
-             name="login"
-             [(ngModel)]="userLogin"
-             #inputLogin="ngModel"
-             required pattern="[a-zA-Z]{1,15}"
-      >
-      <span [style.visibility]="inputLogin.valid ? 'hidden' : 'visible'"
-            class="invalidInputMessage">Логин невалиден [style.visibility]="..."</span>
-      <span [style.display]="inputLogin.valid ? 'none' : 'block'"
-            class="invalidInputMessage">Логин невалиден [style.display]="..."</span>
-      <span [ngStyle]="{'display' : inputLogin.valid ? 'none' : 'block'}"
-            class="invalidInputMessage">Логин невалиден [ngStyle]="..."</span>
-      <!--[hidden]="..." не работает, если в СSS задано значение display-->
-      <!--<div [hidden]="inputLogin.valid" class="invalidInputMessage">Логин невалиден</div>-->
-      <!--Не работает display: none из класса .invisible -->
-      <span [ngClass]="{invisible : inputLogin.valid}"
-            class="invalidInputMessage">Логин невалиден [ngClass]="..."</span>
-    </label>
+    <div class="title">Добавление пользователя</div>
+    <div class="inputs">
+      <label for="">
+        <span class="fieldLabel">ФИО пользователя:</span>
+        <input type="text" todo-type="password"
+               name="userName"
+               [(ngModel)]="userName"
+               #inputUserName="ngModel"
+               required
+               pattern="[a-zA-Zа-яА-Я\. ]{1,50}"
+        >
+        <span *ngIf="inputUserName.invalid" class="invalidInputMessage">ФИО не валидно</span>
+      </label>
+        <label for="">
+            <span class="fieldLabel">Логин:</span>
+            <input type="text"
+                   name="login"
+                   [(ngModel)]="userLogin"
+                   #inputLogin="ngModel"
+                   required pattern="[a-zA-Z]{1,15}"
+            >
+            <span [style.visibility]="inputLogin.valid ? 'hidden' : 'visible'"
+                  class="invalidInputMessage">Логин невалиден [style.visibility]="..."</span>
+            <span [style.display]="inputLogin.valid ? 'none' : 'block'"
+                  class="invalidInputMessage">Логин невалиден [style.display]="..."</span>
+            <span [ngStyle]="{'display' : inputLogin.valid ? 'none' : 'block'}"
+                  class="invalidInputMessage">Логин невалиден [ngStyle]="..."</span>
+            <!--Не работает display: none из класса .invisible
+             Чтобы работало, нужно отключать класс "invalidInputMessage"-->
+            <span [ngClass]="{invisible : inputLogin.valid, invalidInputMessage : inputLogin.invalid}"
+            >Логин невалиден [ngClass]="..."</span>
+            <!--[hidden]="..." не работает, если в СSS задано значение display-->
+            <!--<div [hidden]="!inputLogin.valid" class="invalidInputMessage">Логин невалиден [hidden]=".."</div>-->
+        </label>
 
-    <label for="">
-      <span class="fieldLabel">Пароль:</span>
-      <input type="text" todo-type="password"
-             name="pass"
-             [(ngModel)]="userPass"
-             #inputPass="ngModel"
-             required
-             pattern="[a-zA-Z\d]{6,15}"
-      >
-      <span *ngIf="inputPass.valid == false" class="invalidInputMessage">Пароль невалиден</span>
-    </label>
+        <label for="">
+            <span class="fieldLabel">Пароль:</span>
+            <input type="text" todo-type="password"
+                   name="pass"
+                   [(ngModel)]="userPass"
+                   #inputPass="ngModel"
+                   required
+                   pattern="[a-zA-Z\d]{6,15}"
+            >
+            <span *ngIf="inputPass.valid == false" class="invalidInputMessage">Пароль невалиден</span>
+        </label>
 
-    <label for="">
-      <span class="fieldLabel">Подтвердите пароль:</span>
-      <input type="text" todo-type="password"
-             name="passConfirm"
-             [(ngModel)]="userPassConfirm"
-             #inputPassConfirm="ngModel"
-      >
-      <span *ngIf="inputPass.value != inputPassConfirm.value" class="invalidInputMessage">Пароли не совпадают @TODO: блокировать submit</span>
-    </label>
-  </div>
-  <div class="buttons">
-    <button [disabled]="formUserAdd.invalid">Добавить</button>
-    <button (click)="hideFormAdd()">Отмена</button>
-  </div>
-
+        <label for="">
+            <span class="fieldLabel">Подтвердите пароль:</span>
+            <input type="text" todo-type="password"
+                   name="passConfirm"
+                   [(ngModel)]="userPassConfirm"
+                   #inputPassConfirm="ngModel"
+            >
+            <span *ngIf="inputPass.value != inputPassConfirm.value" class="invalidInputMessage">Пароли не совпадают @TODO: блокировать submit</span>
+        </label>
+    </div>
+    <div class="buttons">
+        <button [disabled]="formUserAdd.invalid || inputPass.value != inputPassConfirm.value">Добавить</button>
+        <button [disabled]="!isFormValid(formUserAdd)">Добавить (валидация через метод)</button>
+        <button (click)="hideFormAdd()">Отмена</button>
+    </div>
 </form>
 
 

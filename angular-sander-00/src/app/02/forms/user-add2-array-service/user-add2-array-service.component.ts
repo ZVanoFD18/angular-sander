@@ -21,7 +21,11 @@ export class UserAdd2ArrayServiceComponent implements OnInit {
             form : form,
             component : this
         });
-        this.us.add(form.controls.login.value);
+        this.us.add(
+            form.controls.userName.value,
+            form.controls.login.value,
+            form.controls.pass.value
+        );
     }
 
     showFormAdd() {
@@ -29,5 +33,10 @@ export class UserAdd2ArrayServiceComponent implements OnInit {
     }
     hideFormAdd() {
         this.isFormVisible = false;
+    }
+    isFormValid(form : NgForm){
+        return form.valid
+            && form.controls.pass && form.controls.passConfirm
+            && form.controls.pass.value == form.controls.passConfirm.value;
     }
 }

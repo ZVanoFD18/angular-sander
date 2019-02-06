@@ -1,6 +1,6 @@
 .invisible{
     display: none;
-    visibility: hidden;
+    --visibility: hidden;
 }
 .invalidInputMessage
 {
