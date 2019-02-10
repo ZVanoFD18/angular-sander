@@ -11,27 +11,9 @@ import { ListComponent as UserListComponent} from './users/list/list.component';
 import {UsersArrayService} from './01/services/users-array.service';
 import { UserAddNgForm } from './02/forms/user-add-ngform/user-add-ngform.component';
 import { UserAddFormGroupComponent } from './02/forms/user-add-form-group/user-add-form-group.component';
-
-const routes: Routes = [{
-    path: '', // 1. Указываем, что компонент "HomeComponent" должен отображаться если маршрут не найден (компонент по-умолчанию).
-    component: HomeComponent  // Например, для "http://localhost:4200"
-}, {
-    path: 'home', // 2. Указываем, что  компонент "HomeComponent" должен отображаться также для "http://localhost:4200/home"
-    component: HomeComponent
-}, {
-    path: '00/interpolation',
-    component: InterpolationComponent
-}, {
-    path: '01/services/user-array-list',
-    component: UserListComponent
-}, {
-    path: '02/forms/user-add-ngform',
-    component: UserAddNgForm
-}, {
-    path: '02/forms/user-add-form-group',
-    component: UserAddFormGroupComponent
-}];
-
+import {UsersRandomapiService} from './01/services/users-randomapi.service';
+import {Myrouting} from './myrouting';
+const routes = Myrouting.getRoutes();
 @NgModule({
     declarations: [
         AppComponent,
@@ -49,7 +31,8 @@ const routes: Routes = [{
         ReactiveFormsModule
     ],
     providers: [
-        UsersArrayService
+        UsersArrayService,
+        UsersRandomapiService
     ],
     bootstrap: [AppComponent]
 })

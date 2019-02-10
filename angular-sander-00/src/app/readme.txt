@@ -59,6 +59,20 @@ const routes: Routes = [{
 Кроме того, один и тот же контент будет выводиться по ссылкам
 "http://localhost:4200"
 "http://localhost:4200/home"
+2.4. Выносим маршрутизацию в отдельный файл
+>ng g class myrouting
+Создаем статический метод для получения маршрутов.
+const routes: Routes = [...];
+export class Myrouting {
+    static getRoutes() {
+        return routes;
+    }
+}
+Переносим const routes: Routes из "angular-sander-00/src/app/app.component.ts" в новый файл.
+А вместо сонстант маршрутов пишем.
+import {Myrouting} from './myrouting';
+const routes = Myrouting.getRoutes();
+
 
 2.3. Создаем меню
 2.3.1 Генерация компонента
@@ -189,3 +203,8 @@ const routes: Routes = [{
 // angular-sander-00/src/app/menu/menu.component.html
   <a routerLink="02/forms/user-add-form-group" class="menu-item">02/forms/user-add-form-group</a>
 5.2.2. Наполняем контентом. См. "angular-sander-00/src/app/02/forms/user-add-form-group"
+
+6. httpClient сервис
+>ng g s /01/services/users-randomapi
+>ng g c /30/HttpClient/list
+
