@@ -1,22 +1,38 @@
-<form [formGroup]="formAdd" (submit)="onSubmit()">
-  <label for="">
-    <span>ФИО</span>
-    <input formControlName="userName">
-  </label>
-  <label for="">
-    <span>Логин</span>
-    <input formControlName="userLogin">
-  </label>
-  <label for="">
-    <span>Пароль</span>
-    <input formControlName="userPass">
-  </label>
-  <label for="">
-    <span>Подтвердите пароль</span>
-    <input formControlName="userPassConfirm">
-  </label>
-  <div>
-    <button>Сохранить</button>
-  </div>
+<form [formGroup]="formAdd" (ngSubmit)="onSubmit()" class="panel">
+    <div class="panel">
+        <button type="button" (click)="fillTestData()">Залить тестовые данные</button>
+    </div>
+    <div class="panel">
+        <label for="">
+            <span>ФИО</span>
+            <input formControlName="userName">
+        </label>
+        <label for="">
+            <span>Логин</span>
+            <input formControlName="userLogin">
+        </label>
+    </div>
+    <div formGroupName="pass" class="panel">
+        <label for="">
+            <span>Пароль</span>
+            <input formControlName="userPass" #userPass>
+        </label>
+        <div class="form-group">
+            <label for="">
+                <span>Подтвердите пароль</span>
+                <input formControlName="userPassConfirm" #inputUserPassConfirm>
+                <div *ngIf="myField.pass.controls.userPassConfirm.errors">
+                    Ошибки:
+                    <div *ngIf="myField.pass.controls.userPassConfirm.errors.required">Поле обязательно для ввода</div>
+                    <div *ngIf="myField.pass.controls.userPassConfirm.errors.passConfirmNotSame">Пароли не совпадают</div>
+                </div>
+            </label>
+            <!--<div *ngIf="pass.invalid">Пароль неверен</div>-->
+        </div>
+    </div>
+    <div class="panel">
+        <button [disabled]="!isFormValid()">Сохранить</button>
+        <!--<button [disabled]="isValid">Сохранить</button>-->
+    </div>
 </form>
 <app-list></app-list>

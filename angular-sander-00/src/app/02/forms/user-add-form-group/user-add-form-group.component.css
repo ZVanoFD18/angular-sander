@@ -1,3 +1,9 @@
 label{
     display: block;
 }
+.panel{
+    border: 1px solid cadetblue;
+    padding: 0.5rem;
+    margin: 1px;
+    border-radius: 0.5rem;
+}
