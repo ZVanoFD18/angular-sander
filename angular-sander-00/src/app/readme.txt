@@ -152,7 +152,7 @@ export class ListComponent implements OnInit {
 5.1.1. Генерируем заготовку и подключаем в проект.
 >ng g c 02/forms/user-add2-array-service
 
-//angular-sander-00/src/app/02/forms/user-add2-array-service/user-add2-array-service.component.ts
+//angular-sander-00/src/app/02/forms/user-add2-array-service/user-add-ngform.component.ts
 import {UsersArrayService} from '../../../01/services/users-array.service';
 constructor(private us: UsersArrayService) { }
 

@@ -9,7 +9,7 @@ import {HomeComponent} from './home/home.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ListComponent as UserListComponent} from './users/list/list.component';
 import {UsersArrayService} from './01/services/users-array.service';
-import { UserAdd2ArrayServiceComponent } from './02/forms/user-add2-array-service/user-add2-array-service.component';
+import { UserAddNgForm } from './02/forms/user-add-ngform/user-add-ngform.component';
 import { UserAddFormGroupComponent } from './02/forms/user-add-form-group/user-add-form-group.component';
 
 const routes: Routes = [{
@@ -25,8 +25,8 @@ const routes: Routes = [{
     path: '01/services/user-array-list',
     component: UserListComponent
 }, {
-    path: '02/forms/user-add2-array-service',
-    component: UserAdd2ArrayServiceComponent
+    path: '02/forms/user-add-ngform',
+    component: UserAddNgForm
 }, {
     path: '02/forms/user-add-form-group',
     component: UserAddFormGroupComponent
@@ -39,7 +39,7 @@ const routes: Routes = [{
         MenuComponent,
         HomeComponent,
         UserListComponent,
-        UserAdd2ArrayServiceComponent,
+        UserAddNgForm,
         UserAddFormGroupComponent
     ],
     imports: [

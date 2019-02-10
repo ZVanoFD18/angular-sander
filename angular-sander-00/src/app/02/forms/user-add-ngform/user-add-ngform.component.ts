@@ -3,11 +3,11 @@ import {UsersArrayService} from '../../../01/services/users-array.service';
 import {NgForm} from '@angular/forms';
 
 @Component({
-    selector: 'app-user-add2-array-service',
-    templateUrl: './user-add2-array-service.component.html',
-    styleUrls: ['./user-add2-array-service.component.css']
+    selector: 'app-user-add-ngform',
+    templateUrl: './user-add-ngform.component.html',
+    styleUrls: ['./user-add-ngform.component.css']
 })
-export class UserAdd2ArrayServiceComponent implements OnInit {
+export class UserAddNgForm implements OnInit {
     isFormVisible = false;
 
     constructor(private us: UsersArrayService) {
