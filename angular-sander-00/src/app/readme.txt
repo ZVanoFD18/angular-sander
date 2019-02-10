@@ -206,5 +206,12 @@ const routes: Routes = [{
 
 6. httpClient сервис
 >ng g s /01/services/users-randomapi
+>ng g c /30/HttpClient/page
+>ng g c /30/HttpClient/loadmask
 >ng g c /30/HttpClient/list
+>ng g c /30/HttpClient/form-filters
+Прописываем необходимые библиотеки и наполняем контентом.
+См.:
+angular-sander-00/src/app/01/services/users-randomapi.service.ts
+angular-sander-00/src/app/30/HttpClient.*
 

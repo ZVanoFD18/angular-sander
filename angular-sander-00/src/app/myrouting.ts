@@ -4,6 +4,7 @@ import {ListComponent as UserListComponent} from "./users/list/list.component";
 import {UserAddNgForm} from "./02/forms/user-add-ngform/user-add-ngform.component";
 import {UserAddFormGroupComponent} from "./02/forms/user-add-form-group/user-add-form-group.component";
 import {InterpolationComponent} from "./00/interpolation/interpolation.component";
+import {PageComponent as HttpClientPage} from './30/HttpClient/page/page.component';
 
 const routes: Routes = [{
     path: '', // 1. Указываем, что компонент "HomeComponent" должен отображаться если маршрут не найден (компонент по-умолчанию).
@@ -23,6 +24,9 @@ const routes: Routes = [{
 }, {
     path: '02/forms/user-add-form-group',
     component: UserAddFormGroupComponent
+}, {
+    path: '30/http-client-page',
+    component: HttpClientPage
 }];
 
 export class Myrouting {

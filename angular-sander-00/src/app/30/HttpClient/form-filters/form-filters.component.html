@@ -1,0 +1,11 @@
+<h2>Критерии поиска</h2>
+<form [formGroup]="formFilters"  (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label >Кол-во записей:</label>
+    <input formControlName="countRows" #inputCountRows>
+    <div *ngIf="inputCountRows.invalid"></div>
+  </div>
+  <div class="form-group">
+    <button>Поиск</button>
+  </div>
+</form>

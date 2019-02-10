@@ -1,0 +1,5 @@
+<p>Страница поиска пользователей в <a href="https://randomuser.me" class="href">randomuser.me</a></p>
+<p>Разбиваем на компонент с критериями поиска, компонент отображения списка и компонент наложения маски.</p>
+<app-users-randomapi-form-filters (notifySubmit)="onSearch($event)"></app-users-randomapi-form-filters>
+<app-users-randomapi-list [users]="users"></app-users-randomapi-list>
+<app-loadmask [isVisible]="isLoadind"></app-loadmask>
